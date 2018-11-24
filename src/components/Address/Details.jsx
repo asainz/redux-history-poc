@@ -6,9 +6,14 @@ export default class View extends Component {
         super(props);
     }
     render() {
+        const { address } = this.props;
         return (
             <div className="Address-Page Address-Details">
-                <p>This is the address details</p>
+                {Object.keys(address).map(k => (
+                    <p>
+                        {k}: {address[k]}
+                    </p>
+                ))}
             </div>
         );
     }
