@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import Address from './components/Address';
+
 class App extends Component {
     render() {
         return (
@@ -8,6 +10,7 @@ class App extends Component {
                 <header className="App-header">
                     <p>redux-undo example</p>
                 </header>
+                <Address />
             </div>
         );
     }
