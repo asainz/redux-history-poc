@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './Address.css';
 
 export default class View extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         const { address } = this.props;
         return (

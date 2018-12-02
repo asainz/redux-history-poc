@@ -6,8 +6,8 @@ import Form from './Form';
 import Details from './Details';
 import NavigationBar from './NavigationBar';
 
-import { setFieldTextValue } from '../../store/reducers/address';
-import { ActionCreators } from 'redux-undo';
+import { setFieldTextValue, takeAddressSnapshot, applyAddressSnapshot } from '../../store/reducers/address';
+// import { ActionCreators } from 'redux-undo';
 
 const VIEW_FORM = 'go to form';
 const VIEW_DETAILS = 'go to details';
@@ -21,7 +21,7 @@ class Address extends Component {
 
     render() {
         const { view } = this.state;
-        const { address, setFieldTextValue, reset } = this.props;
+        const { address, setFieldTextValue, applyAddressSnapshot, takeAddressSnapshot } = this.props;
 
         return (
             <Fragment>
@@ -29,8 +29,8 @@ class Address extends Component {
                     <Form
                         address={address}
                         onChange={setFieldTextValue}
-                        onReset={reset}
-                        key={JSON.stringify(address)}
+                        takeAddressSnapshot={takeAddressSnapshot}
+                        onReset={applyAddressSnapshot}
                     />
                 ) : (
                     <Details address={address} />
@@ -48,12 +48,10 @@ class Address extends Component {
 }
 
 const mapStateToProps = ({ address }) => {
-    return {
-        address: { ...address.present },
-    };
+    return { address };
 };
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({ setFieldTextValue, reset: ActionCreators.undo }, dispatch);
+    return bindActionCreators({ setFieldTextValue, takeAddressSnapshot, applyAddressSnapshot }, dispatch);
 };
 
 export default connect(

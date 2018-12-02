@@ -6,9 +6,6 @@ const NavigationBarButton = props => {
 };
 
 export default class NavigationBar extends Component {
-    constructor(props) {
-        super(props);
-    }
     handleClick = view => {
         this.props.onClick(view);
     };
