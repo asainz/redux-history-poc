@@ -4,7 +4,7 @@ const defaultState = {
     zipCode: '2021 ts',
     state: 'haarlem',
     country: 'netherlands',
-    snapshot: null,
+    // snapshot: null,
 };
 
 const SET_FIELD_TEXT_VALUE = 'SET_FIELD_TEXT_VALUE';
@@ -25,7 +25,7 @@ export const applyAddressSnapshot = () => {
 
 export default (state = defaultState, action) => {
     const { type, payload } = action;
-    const { snapshot, ...stateWithSnapshot } = state;
+    // const { snapshot, ...stateWithSnapshot } = state;
     switch (type) {
         case SET_FIELD_TEXT_VALUE:
             if (!payload.field) {
@@ -33,11 +33,11 @@ export default (state = defaultState, action) => {
             }
             return { ...state, [payload.field]: payload.value };
 
-        case TAKE_ADDRESS_SNAPSHOT:
-            return { ...state, snapshot: { ...stateWithSnapshot } };
+        // case TAKE_ADDRESS_SNAPSHOT:
+        //     return { ...state, snapshot: { ...stateWithSnapshot } };
 
-        case APPLY_ADDRESS_SNAPSHOT:
-            return { ...state.snapshot, snapshot: null };
+        // case APPLY_ADDRESS_SNAPSHOT:
+        //     return { ...state.snapshot, snapshot: null };
 
         default:
             return state;
